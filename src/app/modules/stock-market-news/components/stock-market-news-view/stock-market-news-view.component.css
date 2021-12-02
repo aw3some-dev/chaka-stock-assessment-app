@@ -1,0 +1,32 @@
+.market-news__wrapper {
+    display: flex;
+    justify-content: space-between;
+    padding: 1em;
+    border: 1px solid red;
+}
+
+.market-news__image {
+    background-image: url('/assets/images/stock-img-1.jpg');
+    height: 240px;
+    width: 20%;
+    background-color: limegreen;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+}
+
+.market-news__content {
+    width: 75%;
+
+}
+
+h4.content-title {
+    font-weight: 700;
+    font-size: 1.4em;
+    line-height: 1.1em;
+}
+
+p.content-description {
+    line-height: 1.1em;
+    font-weight: 400;
+}
