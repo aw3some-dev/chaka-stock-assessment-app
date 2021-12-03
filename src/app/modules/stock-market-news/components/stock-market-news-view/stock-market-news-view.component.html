@@ -1,10 +1,26 @@
-<div class="market-news__wrapper">
+<!-- <div class="market-news__wrapper">
     <div [ngStyle]="getBackgroundImgStyle('/assets/images/stock-img-1.jpg')"></div>
 
     <div class="market-news__content">
-        <h4 class="content-title">Another Profitable Canadian Cannabis Producer: Greenway Greenhouse Posts First Results Since Market Debut</h4>
-        <p class="content-description">Greenway ffgrwegreghrehreherhrehrehreherhre regherhrehreg rehrehreh rehgerherh erhrehrehr regherhrehregger
+        <h4 class="content-title">Another Profitable Canadian Cannabis Producer: Greenway Greenhouse Posts First Results
+            Since Market Debut</h4>
+        <p class="content-description">Greenway ffgrwegreghrehreherhrehrehreherhre regherhrehreg rehrehreh rehgerherh
+            erhrehrehr regherhrehregger
             hreherherhreher
         </p>
+    </div>
+</div> -->
+<!-- border border-red-800 -->
+
+<div class="flex flex-col md:flex-row w-full gap-4">
+    <div class="w-full md:w-1/4">
+        <div class="w-full" [ngStyle]="getBackgroundImgStyle(newsItem?.imagePath, 180)"></div>
+    </div>
+    <div class="w-full md:w-3/4">
+        <h4 class="text-2xl font-bold">{{ newsItem.heading }}</h4>
+        <p class="text-sm font-medium">
+            {{ newsItem!.content | sliceText:0:240 }}
+        </p>
+        <p class="text-base my-2">{{ newsItem!.date | timeElapsed }}</p>
     </div>
 </div>

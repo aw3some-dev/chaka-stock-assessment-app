@@ -1,8 +1,116 @@
-<div class="container-fluid page-wrapper">
-    <div class="page-header">
-        <p>MARKET VIEW</p>
-        <h3>Today's Market Briefing</h3>
+<div class="container mx-auto w-5/6">
+    <div class="container w-full mb-6">
+        <p class="text-sm font-thin tracking-widest mb-1">MARKET VIEW</p>
+        <h3 class="font-bold text-2xl">Today's Market Briefing.</h3>
     </div>
 
-    
+    <div class="container -m-2 flex flex-wrap justify-start xl:flex-nowrap w-full mb-3">
+        <div class="w-1/2 sm:w-1/3 md:w-1/5 lg:w-1/5 xl:w-auto item p-1">
+            <app-stock-item></app-stock-item>
+        </div>
+        <div class="w-1/2 sm:w-1/3 md:w-1/5 lg:w-1/5 xl:w-auto item p-1">
+            <app-stock-item></app-stock-item>
+        </div>
+        <div class="w-1/2 sm:w-1/3 md:w-1/5 lg:w-1/5 xl:w-auto item p-1">
+            <app-stock-item></app-stock-item>
+        </div>
+        <div class="w-1/2 sm:w-1/3 md:w-1/5 lg:w-1/5 xl:w-auto item p-1">
+            <app-stock-item></app-stock-item>
+        </div>
+        <div class="w-1/2 sm:w-1/3 md:w-1/5 lg:w-1/5 xl:w-auto item p-1">
+            <app-stock-item></app-stock-item>
+        </div>
+        <div class="w-1/2 sm:w-1/3 md:w-1/5 lg:w-1/5 xl:w-auto item p-1">
+            <app-stock-item></app-stock-item>
+        </div>
+        <div class="w-1/2 sm:w-1/3 md:w-1/5 lg:w-1/5 xl:w-auto item p-1">
+            <app-stock-item></app-stock-item>
+        </div>
+        <div class="w-1/2 sm:w-1/3 md:w-1/5 lg:w-1/5 xl:w-auto item p-1">
+            <app-stock-item></app-stock-item>
+        </div>
+        <div class="w-1/2 sm:w-1/3 md:w-1/5 lg:w-1/5 xl:w-auto item p-1">
+            <app-stock-item></app-stock-item>
+        </div>
+        <div class="w-1/2 sm:w-1/3 md:w-1/5 lg:w-1/5 xl:w-auto item p-1">
+            <app-stock-item></app-stock-item>
+        </div>
+        <div class="w-1/2 sm:w-1/3 md:w-1/5 lg:w-1/5 xl:w-auto item p-1">
+            <app-stock-item></app-stock-item>
+        </div>
+    </div>
+
+    <div appBorderBottom class="container w-full md:flex lg:flex items-baseline gap-5 pb-10 mb-5">
+        <div class="w-full md:w-3/4 lg:w-3/4 xl:w-3/4 mb-4">
+            <div appBorderBottom class="py-2 mb-4">
+                <p appMutedText class="text-xs tracking-wide">Active stocks last updated {{ today | date:'MMM dd y' }}
+                </p>
+            </div>
+
+            <div class="mb-4">
+                <h3 class="font-bold text-xl text-black">Sector Highlights</h3>
+                <p appMutedText class="text-xs font-normal tracking-wider">{{ today | date:'MMM dd y, hh:mm:SS
+                    aaaaa\'m\'' }} </p>
+            </div>
+
+            <div appBorderBottom class="md:flex lg:flex xl:flex gap-4 pb-10 mb-2">
+                <div *ngFor="let highlight of sectorHighlights" class="w-full md:w-1/2 lg:w-1/2 xl:w-1/2 mb-1">
+                    <app-sector-highlight [sectorHighlight]="highlight"></app-sector-highlight>
+                </div>
+            </div>
+
+            <div class="container">
+                <div appBorderBottom class="mb-2">
+                    <h3 class="font-bold text-xl text-black">Ex-Dividends</h3>
+
+                    <div class="flex justify-between">
+                        <p class="text-sm font-normal">Symbol</p>
+                        <p class="text-sm font-normal">Amount</p>
+                    </div>
+                </div>
+
+                <p appMutedText class="text-sm tracking-wide">There are no upcoming dividends</p>
+            </div>
+        </div>
+
+        <div class="w-full md:w-1/4 lg:w-1/4 xl:w-1/4 mt-3 py-4 px-4 shadow">
+            <h3 class="inline leading-none text-xl font-bold text-black align-middle m-0">
+                My watchlist
+                <img src="/assets/icons/star-dark.svg" class="inline-image h-5 w-auto">
+            </h3>
+
+            <p class="text-sm font-light">
+                <span class="italic">Your watchlist is empty.</span>
+                Build your watchlist by starring
+                (<img src="/assets/icons/star-blue.png" class="inline-image h-3 w-auto" />)
+                the stocks you want to follow
+            </p>
+        </div>
+    </div>
+
+    <div appBorderBottom class="container mb-8">
+        <h3 class="font-bold text-xl text-black mb-2">Earnings</h3>
+
+        <div>
+            <ul class="list-none flex flex-wrap justify-between">
+                <li *ngFor="let earning of earnings" class="text-xs font-light mr-3 mb-3">{{ earning }}</li>
+            </ul>
+        </div>
+    </div>
+
+    <div appBorderBottom class="p-5 mb-5"></div>
+
+    <div class="container mb-10">
+        <div class="mb-4">
+            <h3 class="font-bold text-xl text-black">Sector Performance</h3>
+            <p appMutedText class="text-xs font-normal tracking-wider">
+                {{ today | date:'MMM dd y, hh:mm:SS aaaaa\'m\'' }} </p>
+        </div>
+
+        <div class="container -m-2 flex flex-wrap justify-between">
+            <div *ngFor="let performance of sectorPerformances" class="w-full sm:w-1/2 md:w-1/4 lg:w-1/4 xl:w-1/4 bg-item flex-grow p-1">
+                <app-sector-highlight [sectorHighlight]="performance"></app-sector-highlight>
+            </div>
+        </div>
+    </div>
 </div>

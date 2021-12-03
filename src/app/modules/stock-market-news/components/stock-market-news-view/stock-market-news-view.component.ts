@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnChanges, OnInit, SimpleChanges } from '@angular/core';
+import { IStockMarketNews } from 'src/app/shared/interfaces/IStockMarketNews';
 
 import { getBackgroundImageStyle } from "../../../../shared/utilities/utils";
 
@@ -9,11 +10,16 @@ import { getBackgroundImageStyle } from "../../../../shared/utilities/utils";
 })
 export class StockMarketNewsViewComponent implements OnInit {
 
+  @Input() newsItem: IStockMarketNews = <IStockMarketNews>{};
+
   getBackgroundImgStyle: Function = getBackgroundImageStyle;
 
-  constructor() { }
+  constructor() {
+
+  }
 
   ngOnInit(): void {
+
   }
 
 }

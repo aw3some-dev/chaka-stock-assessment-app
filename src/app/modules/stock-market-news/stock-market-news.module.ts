@@ -4,6 +4,7 @@ import { CommonModule } from '@angular/common';
 import { StockMarketNewsRoutingModule } from './stock-market-news-routing.module';
 import { StockMarketNewsListComponent } from './components/stock-market-news-list/stock-market-news-list.component';
 import { StockMarketNewsViewComponent } from './components/stock-market-news-view/stock-market-news-view.component';
+import { SharedModule } from 'src/app/shared/shared.module';
 
 
 @NgModule({
@@ -13,7 +14,8 @@ import { StockMarketNewsViewComponent } from './components/stock-market-news-vie
   ],
   imports: [
     CommonModule,
-    StockMarketNewsRoutingModule
+    StockMarketNewsRoutingModule,
+    SharedModule
   ]
 })
 export class StockMarketNewsModule { }

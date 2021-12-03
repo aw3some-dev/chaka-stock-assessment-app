@@ -1,0 +1,12 @@
+[
+  {
+    "name": "Health Care",
+    "changePercent": 0.46,
+    "imagePath": "assets/sector-images/health.jpg"
+  },
+  {
+    "name": "Industrials",
+    "changePercent": -0.78,
+    "imagePath": "assets/sector-images/industrial.jpg"
+  }
+]

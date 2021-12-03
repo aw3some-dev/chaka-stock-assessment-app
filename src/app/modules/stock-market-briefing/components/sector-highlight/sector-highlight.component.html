@@ -1,0 +1,10 @@
+<div class="flex w-full bg-gray-600 overflow-hidden rounded"
+    [ngStyle]="getBackgroundImgStyle(sectorHighlight.imagePath, 140)">
+    <div class="flex flex-col justify-between items-baseline bg-black bg-opacity-25 w-full h-full p-4 relative">
+        <h3 class="text-white font-medium text-base">{{ sectorHighlight.name }}</h3>
+
+        <div [appBadgeColor]="sectorHighlight.changePercent" class="badge px-1 py-1 rounded-sm absolute bottom-4 right-4">
+            <p class="text-white font-medium text-base">{{ sectorHighlight.changePercent | percent:'1.2-2' }}</p>
+        </div>
+    </div>
+</div>

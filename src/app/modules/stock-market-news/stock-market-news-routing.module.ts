@@ -4,7 +4,7 @@ import { StockMarketNewsListComponent } from './components/stock-market-news-lis
 import { StockMarketNewsViewComponent } from './components/stock-market-news-view/stock-market-news-view.component';
 
 const routes: Routes = [
-  { path: '', component: StockMarketNewsViewComponent }
+  { path: '', component: StockMarketNewsListComponent }
 ];
 
 @NgModule({
