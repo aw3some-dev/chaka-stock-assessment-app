@@ -8,7 +8,7 @@ const routes: Routes = [
   {
     path: 'stock-market-news', loadChildren: () => import('./modules/stock-market-news/stock-market-news.module')
       .then(m => m.StockMarketNewsModule)
-  },
+  }, 
   {
     path: 'stock-market-briefing', loadChildren: () => import('./modules/stock-market-briefing/stock-market-briefing.module')
       .then(m => m.StockMarketBriefingModule)
