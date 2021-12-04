@@ -12,7 +12,7 @@
 </div> -->
 <!-- border border-red-800 -->
 
-<div class="flex flex-col md:flex-row w-full gap-4">
+<div [@itemState]="animationState" class="flex flex-col md:flex-row w-full gap-4">
     <div class="w-full md:w-1/4">
         <div class="w-full" [ngStyle]="getBackgroundImgStyle(newsItem?.imagePath, 180)"></div>
     </div>
