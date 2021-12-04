@@ -1,5 +1,5 @@
 import { HttpErrorResponse } from '@angular/common/http';
-import { Component, Input, OnDestroy, OnInit } from '@angular/core';
+import { ChangeDetectionStrategy, ChangeDetectorRef, Component, Input, OnDestroy, OnInit } from '@angular/core';
 import { Subscription } from 'rxjs';
 import { IAllStockInfo } from 'src/app/shared/interfaces/IAllStockInfo';
 import { StockMarketService } from 'src/app/shared/services/stock-market/stock-market.service';
@@ -7,7 +7,8 @@ import { StockMarketService } from 'src/app/shared/services/stock-market/stock-m
 @Component({
   selector: 'app-stock-item',
   templateUrl: './stock-item.component.html',
-  styleUrls: ['./stock-item.component.css']
+  styleUrls: ['./stock-item.component.css'],
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class StockItemComponent implements OnInit, OnDestroy {
 
@@ -20,7 +21,7 @@ export class StockItemComponent implements OnInit, OnDestroy {
 
   subscription: Subscription = new Subscription();
 
-  constructor(private stockMarketService: StockMarketService) {
+  constructor(private stockMarketService: StockMarketService, private cdr: ChangeDetectorRef) {
 
   }
 
@@ -36,9 +37,10 @@ export class StockItemComponent implements OnInit, OnDestroy {
 
   ngOnInit(): void {
     const stockInfoSub = this.stockMarketService.stockInfo$.subscribe(stock => {
-      console.log(stock);
+      // console.log(stock);
       if (!!stock.globalQuote && stock.globalQuote.hasOwnProperty('symbol') && stock.globalQuote.symbol) {
         this.stockInformation = stock;
+        this.cdr.markForCheck(); // Fix View not updating
       }
     });
 
@@ -47,7 +49,6 @@ export class StockItemComponent implements OnInit, OnDestroy {
     }
 
     this.subscription.add(stockInfoSub);
-
   }
 
   getStockInformation() {
@@ -63,6 +64,7 @@ export class StockItemComponent implements OnInit, OnDestroy {
           return;
         }
 
+        console.log(response);
         this.stockInformation = response;
       },
       (error: HttpErrorResponse) => {
