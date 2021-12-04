@@ -106,12 +106,13 @@ export class StockChartComponent implements OnInit {
   }
 
   openShareWindow() {
-    navigator.share({
-      url: environment.WEB_URL,
-      title: this.stockInformation!.stockOverview!.Symbol,
-      text: this.stockInformation!.stockOverview!.Name 
-    });
-
+    if (navigator && navigator.share) {
+      navigator.share({
+        url: environment.WEB_URL,
+        title: this.stockInformation!.stockOverview!.Symbol,
+        text: this.stockInformation!.stockOverview!.Name
+      });
+    }
     console.log(this.route.snapshot.url)
   }
 }

@@ -18,7 +18,6 @@ export class StockChartDetailsComponent implements OnInit {
 
   option: any;
 
-
   constructor() {
 
   }
@@ -27,7 +26,7 @@ export class StockChartDetailsComponent implements OnInit {
 
     console.log(new Date().getHours());
 
-    for (let i = 1; i < 2000; i++) {
+    for (let i = 1; i < 8000; i++) {
       var now = new Date((this.base += this.oneDay));
       const time = !this.date.length ? now.getHours() : this.date[this.date.length - 1] + 2;
       this.date.push(time);
@@ -78,7 +77,7 @@ export class StockChartDetailsComponent implements OnInit {
       ],
       series: [
         {
-          name: 'Fake Data',
+          name: 'Data',
           type: 'line',
           symbol: 'none',
           sampling: 'lttb',
