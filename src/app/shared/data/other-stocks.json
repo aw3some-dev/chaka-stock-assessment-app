@@ -1,0 +1,26 @@
+[
+  {
+    "name": "SPDR S&P 500 ETF Trust",
+    "price": 458.97,
+    "symbol": "SPY",
+    "changePercent": 2.23
+  },
+  {
+    "name": "ProShares UltraPro QQQ",
+    "price": 160.84,
+    "symbol": "TQQQ",
+    "changePercent": 5.52
+  },
+  {
+    "name": "Vanguard 500 Index Funding",
+    "price": 422.14,
+    "symbol": "VOO",
+    "changePercent": 2.18
+  },
+  {
+    "name": "Apple Inc",
+    "price": 156.81,
+    "symbol": "AAPL",
+    "changePercent": 3.17
+  }
+]

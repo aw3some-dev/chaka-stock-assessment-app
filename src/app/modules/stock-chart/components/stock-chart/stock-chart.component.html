@@ -1,0 +1,79 @@
+<div class="container mx-auto w-5/6">
+    <div appBorderBottom class="container md:flex lg:flex xl:flex justify-between mb-5 py-3">
+        <div class="py-3">
+            <p *ngIf="stockInformation" class="text-sm font-thin tracking-widest mb-1">{{
+                stockInformation!.stockOverview!.Symbol }}
+            </p>
+            <h3 *ngIf="stockInformation" class="font-bold text-2xl">
+                {{ stockInformation!.stockOverview!.Name }}
+            </h3>
+        </div>
+
+        <div class="flex items-center">
+            <div class="rounded-full py-1 px-6 bg-blue-100 shadow mr-2">
+                Following
+            </div>
+            <div class="rounded-full py-1 px-6 bg-white shadow">
+                Share
+            </div>
+        </div>
+    </div>
+
+    <div class="container md:flex lg:flex xl:flex justify-between mb-10">
+        <div class="w-full md:w-full lg:w-2/3 xl:w-2/3 lg:px-2 xl:px-2">
+            <div *ngIf="stockInformation" class="">
+                <h3 class="font-bold text-4xl">
+                    {{ stockInformation!.globalQuote!.price | number: '1.2-2' | currency: 'USD': 'symbol' }}
+                </h3>
+                <p>
+                    Pre-market:
+                    <span>
+                        {{ stockInformation!.globalQuote!.price | number: '1.2-2' | currency: 'USD': 'symbol' }}
+                    </span>
+                    <span [appTextColor]="stockInformation!.globalQuote!.price">
+                        ({{ stockInformation!.globalQuote!.changePercent | percent: '1.2-2' }})
+                    </span>
+                </p>
+            </div>
+
+            <div class="mb-8">
+                <app-stock-chart-details></app-stock-chart-details>
+            </div>
+
+            <div class="w-full -m-2 flex flex-wrap justify-center items-center mx-auto gap-y-2">
+                <div *ngFor="let stock of otherStocks" class="w-1/2 md:w-1/2 lg:w-1/4 xl:w-1/4 px-1">
+                    <div class="w-full border border-gray-400 rounded-md px-1 py-2">
+                        <app-other-stock-info [stock]="stock"></app-other-stock-info>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="container w-full md:w-full lg:w-1/3 xl:w-1/3 mb-3 mt-8 mx-auto lg:px-2 xl:px-2">
+            <div class="rounded-md border border-gray-300 p-3 mb-5">
+                <div appBorderBottom class="flex w-full flex-wrap py-2">
+                    <div *ngFor="let filter of pillFilters"
+                        class="rounded-full text-xs py-1 px-3 border border-gray-300 mr-2 mb-2">
+                        {{ filter }}
+                    </div>
+                </div>
+
+                <div *ngFor="let stat of stockStatistics" appBorderBottom>
+                    <app-stock-statistic [statistic]="stat"></app-stock-statistic>
+                </div>
+            </div>
+
+            <div class="rounded-md border border-gray-300 p-3">
+                <div appBorderBottom class="flex justify-between pb-2">
+                    <h3 class="font-semibold text-xl">About</h3>
+                    <p>&darr;</p>
+                </div>
+
+                <div class="flex justify-between py-3">
+                    <p class="text-sm tracking-wider">{{ 'Founded' | uppercase }} </p>
+                    <p class="text-sm tracking-wider font-semibold">{{ foundedDate | date:'dd MMM y' }}</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

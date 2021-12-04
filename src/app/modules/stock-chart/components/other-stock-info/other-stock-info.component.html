@@ -1,0 +1,9 @@
+<div class="w-full">
+    <p class="text-sm">{{ stock!.name | sliceText:0:15 }}</p>
+    <h4 class="font-semibold my-2">{{ stock.price }}</h4>
+
+    <div class="flex justify-between items-center">
+        <p appMutedText>{{ stock.symbol }}</p>
+        <p [appTextColor]="stock.changePercent">{{ stock.changePercent | percent: '1.2-2' }}</p>
+    </div>
+</div>

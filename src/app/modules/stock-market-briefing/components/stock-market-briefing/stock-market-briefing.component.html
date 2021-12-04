@@ -5,7 +5,9 @@
     </div>
 
     <div class="container -m-2 flex flex-wrap justify-start xl:flex-nowrap w-full mb-3">
-        <div *ngFor="let stockSymbol of stockSymbols" class="w-1/2 sm:w-1/3 md:w-1/5 lg:w-1/5 xl:w-auto item p-1">
+        <div *ngFor="let stockSymbol of stockSymbols"
+            class="w-1/2 sm:w-1/3 md:w-1/5 lg:w-1/5 xl:w-auto cursor-pointer item p-1"
+            [routerLink]="['/stock-market-briefing', stockSymbol]">
             <app-stock-item [stockSymbol]="stockSymbol"></app-stock-item>
         </div>
     </div>
@@ -78,7 +80,8 @@
         </div>
 
         <div class="container -m-2 flex flex-wrap justify-between">
-            <div *ngFor="let performance of sectorPerformances" class="w-full sm:w-1/2 md:w-1/4 lg:w-1/4 xl:w-1/4 bg-item flex-grow p-1">
+            <div *ngFor="let performance of sectorPerformances"
+                class="w-full sm:w-1/2 md:w-1/4 lg:w-1/4 xl:w-1/4 bg-item flex-grow p-1">
                 <app-sector-highlight [sectorHighlight]="performance"></app-sector-highlight>
             </div>
         </div>

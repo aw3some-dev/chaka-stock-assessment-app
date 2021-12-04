@@ -25,22 +25,11 @@ export class StockItemComponent implements OnInit, OnDestroy {
 
   }
 
-  // constructor(
-  //   private todosState: TodosStateService,
-  //   private cdr: ChangeDetectorRef
-  // ) {
-  //   this.todosState.todos$.subscribe(todos => {
-  //     this.todos = todos;
-  //     this.cdr.markForCheck(); // Fix View not updating
-  //   });
-  // }
-
   ngOnInit(): void {
     const stockInfoSub = this.stockMarketService.stockInfo$.subscribe(stock => {
-      // console.log(stock);
       if (!!stock.globalQuote && stock.globalQuote.hasOwnProperty('symbol') && stock.globalQuote.symbol) {
         this.stockInformation = stock;
-        this.cdr.markForCheck(); // Fix View not updating
+        this.cdr.markForCheck();
       }
     });
 

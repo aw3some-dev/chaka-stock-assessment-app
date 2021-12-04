@@ -2,6 +2,10 @@
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 11.2.15.
 
+## A Brief Overview of the Project
+An assessment project built to display stock market information, sector highlights, sector performance, stock market news and some stock market statistics in chart form.
+The project was created using Angular version 11.2.15 which leverages the Ivy Compiler. This Angular version in concert with strict template check uncovers errors at runtime.
+
 ## Development server
 
 Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
