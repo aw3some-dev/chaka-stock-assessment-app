@@ -21,6 +21,16 @@ export class StockItemComponent implements OnInit {
 
   constructor(private stockMarketService: StockMarketService) { }
 
+  // constructor(
+  //   private todosState: TodosStateService,
+  //   private cdr: ChangeDetectorRef
+  // ) {
+  //   this.todosState.todos$.subscribe(todos => {
+  //     this.todos = todos;
+  //     this.cdr.markForCheck(); // Fix View not updating
+  //   });
+  // }
+
   ngOnInit(): void {
     this.getStockInformation();
   }
