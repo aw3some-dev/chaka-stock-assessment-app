@@ -3,7 +3,10 @@
 // The list of file replacements can be found in `angular.json`.
 
 export const environment = {
-  production: false
+  production: false,
+  API_ENDPOINT: 'https://www.alphavantage.co/query',
+  // API_KEY: '25EHFU740P1NRXEN'
+  API_KEY: 'demo'
 };
 
 /*

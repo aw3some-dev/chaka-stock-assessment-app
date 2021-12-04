@@ -13,6 +13,19 @@ export class StockMarketBriefingComponent implements OnInit {
 
   today = new Date();
 
+  stockSymbols: string[] = [
+    '300135.SHZ',
+    '300135.SHZ',
+    '300135.SHZ',
+    '300135.SHZ',
+    '300135.SHZ',
+    'IBM',
+    'IBM',
+    'IBM',
+    'IBM',
+    'IBM'
+  ];
+
   sectorHighlights: ISector[] = <ISector[]>sectorHighlights;
 
   sectorPerformances: ISector[] = <ISector[]>sectorPerformances;

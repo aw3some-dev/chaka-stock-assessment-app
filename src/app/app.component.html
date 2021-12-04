@@ -3,7 +3,7 @@
 </div>
 
 <router-outlet>
-    <app-loading-indicator *ngIf="loadingModule">
+    <app-loading-indicator *ngIf="loadingModule" [fullScreenDisplay]="true">
         Loading Module...
     </app-loading-indicator>
 </router-outlet>

@@ -8,14 +8,22 @@
 </div> -->
 
 
-<div class="flex flex-col justify-between p-4 bg-gray-100 w-full h-full">
+<div *ngIf="!isLoading; else loadingTpl" class="flex flex-col justify-between p-4 bg-gray-100 w-full h-full">
     <div>
-        <h3 class="text-base font-semibold text-gray-800 leading-none m-0">BNGO</h3>
-        <p class="text-sm font-normal">Bionano Geonomics Inc</p>
+        <h3 class="text-base font-semibold text-gray-800 leading-none m-0">{{stockInformation?.globalQuote?.symbol | uppercase}}</h3>
+        <p class="text-sm font-normal">{{stockInformation?.stockOverview?.Name}}</p>
     </div>
 
     <div>
-        <p class="text-right text-sm">1.39</p>
-        <p class="text-right text-sm text-red-500">+57.20%</p>
+        <p class="text-right text-sm">{{stockInformation?.globalQuote?.price | number:'1.2-2'}}</p>
+        <p [appTextColor]="stockInformation!.globalQuote!.changePercent" class="text-right text-sm text-red-500">
+            {{stockInformation?.globalQuote?.changePercent | percent:'1.2-2'}}
+        </p>
     </div>
 </div>
+
+<ng-template #loadingTpl>
+    <div class="flex w-full h-full items-center justify-center bg-gray-100">
+        <app-loading-indicator></app-loading-indicator>
+    </div>
+</ng-template>

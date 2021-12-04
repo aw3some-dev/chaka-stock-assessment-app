@@ -1,8 +1,16 @@
-<div class="modal">
-    <div class="loader-wrapper">
-        <div class="loader">
-
-        </div>
-        <ng-content></ng-content>
-    </div>
+<div *ngIf="!fullScreenDisplay; else overlayDisplayTpl" class="loader-wrapper">
+    <div class="loader"></div>
+    <ng-content></ng-content>
 </div>
+
+
+<ng-template #overlayDisplayTpl>
+    <div class="modal">
+        <div class="loader-wrapper">
+            <div class="loader">
+
+            </div>
+            <ng-content></ng-content>
+        </div>
+    </div>
+</ng-template>

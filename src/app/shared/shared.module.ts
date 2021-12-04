@@ -8,6 +8,7 @@ import { MutedTextDirective } from './directives/muted-text/muted-text.directive
 import { BorderBottomDirective } from './directives/bottom-border/border-bottom.directive';
 import { SliceTextPipe } from './pipes/slice-text/slice-text.pipe';
 import { BadgeColorDirective } from './directives/badge-color/badge-color.directive';
+import { TextColorDirective } from './directives/text-color/text-color.directive';
 
 
 @NgModule({
@@ -18,7 +19,9 @@ import { BadgeColorDirective } from './directives/badge-color/badge-color.direct
     MutedTextDirective,
     BorderBottomDirective,
     SliceTextPipe,
-    BadgeColorDirective
+    BadgeColorDirective,
+    TextColorDirective,
+    TextColorDirective,
   ],
   imports: [
     CommonModule,
@@ -32,7 +35,8 @@ import { BadgeColorDirective } from './directives/badge-color/badge-color.direct
     MutedTextDirective,
     BorderBottomDirective,
     SliceTextPipe,
-    BadgeColorDirective
+    BadgeColorDirective,
+    TextColorDirective,
   ]
 })
 export class SharedModule { }

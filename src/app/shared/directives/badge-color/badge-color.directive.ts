@@ -7,7 +7,7 @@ export class BadgeColorDirective {
 
   @Input('appBadgeColor') percentValue = 0.0;
 
-  @HostBinding('style.backgroundColor') backgroundColor = 'red';
+  @HostBinding('style.backgroundColor') backgroundColor = '#28a745';
 
   constructor() { }
 

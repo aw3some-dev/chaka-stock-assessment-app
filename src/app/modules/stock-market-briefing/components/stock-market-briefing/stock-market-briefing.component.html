@@ -5,38 +5,8 @@
     </div>
 
     <div class="container -m-2 flex flex-wrap justify-start xl:flex-nowrap w-full mb-3">
-        <div class="w-1/2 sm:w-1/3 md:w-1/5 lg:w-1/5 xl:w-auto item p-1">
-            <app-stock-item></app-stock-item>
-        </div>
-        <div class="w-1/2 sm:w-1/3 md:w-1/5 lg:w-1/5 xl:w-auto item p-1">
-            <app-stock-item></app-stock-item>
-        </div>
-        <div class="w-1/2 sm:w-1/3 md:w-1/5 lg:w-1/5 xl:w-auto item p-1">
-            <app-stock-item></app-stock-item>
-        </div>
-        <div class="w-1/2 sm:w-1/3 md:w-1/5 lg:w-1/5 xl:w-auto item p-1">
-            <app-stock-item></app-stock-item>
-        </div>
-        <div class="w-1/2 sm:w-1/3 md:w-1/5 lg:w-1/5 xl:w-auto item p-1">
-            <app-stock-item></app-stock-item>
-        </div>
-        <div class="w-1/2 sm:w-1/3 md:w-1/5 lg:w-1/5 xl:w-auto item p-1">
-            <app-stock-item></app-stock-item>
-        </div>
-        <div class="w-1/2 sm:w-1/3 md:w-1/5 lg:w-1/5 xl:w-auto item p-1">
-            <app-stock-item></app-stock-item>
-        </div>
-        <div class="w-1/2 sm:w-1/3 md:w-1/5 lg:w-1/5 xl:w-auto item p-1">
-            <app-stock-item></app-stock-item>
-        </div>
-        <div class="w-1/2 sm:w-1/3 md:w-1/5 lg:w-1/5 xl:w-auto item p-1">
-            <app-stock-item></app-stock-item>
-        </div>
-        <div class="w-1/2 sm:w-1/3 md:w-1/5 lg:w-1/5 xl:w-auto item p-1">
-            <app-stock-item></app-stock-item>
-        </div>
-        <div class="w-1/2 sm:w-1/3 md:w-1/5 lg:w-1/5 xl:w-auto item p-1">
-            <app-stock-item></app-stock-item>
+        <div *ngFor="let stockSymbol of stockSymbols" class="w-1/2 sm:w-1/3 md:w-1/5 lg:w-1/5 xl:w-auto item p-1">
+            <app-stock-item [stockSymbol]="stockSymbol"></app-stock-item>
         </div>
     </div>
 
