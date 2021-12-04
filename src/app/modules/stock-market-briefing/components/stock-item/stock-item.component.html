@@ -8,7 +8,7 @@
 </div> -->
 
 
-<div *ngIf="!loadingData; else loadingTpl" class="flex flex-col justify-between p-4 bg-gray-100 w-full h-full">
+<div *ngIf="!loadingData && stockInformation; else loadingTpl" class="flex flex-col justify-between p-4 bg-gray-100 w-full h-full">
     <div>
         <h3 class="text-base font-semibold text-gray-800 leading-none m-0">{{stockInformation?.globalQuote?.symbol | uppercase}}</h3>
         <p class="text-sm font-normal">{{stockInformation?.stockOverview?.Name}}</p>

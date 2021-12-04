@@ -12,7 +12,7 @@ import { StateService } from '../state/state.service';
 const initialState: IAllStockInfo = {
   globalQuote: {
     changePercent: 0,
-    symbol: 'IBM',
+    symbol: '',
     price: 0,
     latestTradingDay: new Date(),
     previousClose: 0,
