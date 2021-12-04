@@ -1,5 +1,6 @@
 import { HttpErrorResponse } from '@angular/common/http';
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, Input, OnDestroy, OnInit } from '@angular/core';
+import { Subscription } from 'rxjs';
 import { IAllStockInfo } from 'src/app/shared/interfaces/IAllStockInfo';
 import { StockMarketService } from 'src/app/shared/services/stock-market/stock-market.service';
 
@@ -8,18 +9,20 @@ import { StockMarketService } from 'src/app/shared/services/stock-market/stock-m
   templateUrl: './stock-item.component.html',
   styleUrls: ['./stock-item.component.css']
 })
-export class StockItemComponent implements OnInit {
-  
+export class StockItemComponent implements OnInit, OnDestroy {
+
   @Input('stockSymbol') stockSymbol: string = '';
 
   stockInformation!: Partial<IAllStockInfo> | null;
   errorText: string = '';
 
-  isLoading: boolean = false;
+  loadingData: boolean = false;
 
-  changePercentValue: number = 0;
+  subscription: Subscription = new Subscription();
 
-  constructor(private stockMarketService: StockMarketService) { }
+  constructor(private stockMarketService: StockMarketService) {
+
+  }
 
   // constructor(
   //   private todosState: TodosStateService,
@@ -32,30 +35,47 @@ export class StockItemComponent implements OnInit {
   // }
 
   ngOnInit(): void {
-    this.getStockInformation();
+    const stockInfoSub = this.stockMarketService.stockInfo$.subscribe(stock => {
+      console.log(stock);
+      if (!!stock) {
+        this.stockInformation = stock;
+      } else {
+        this.getStockInformation();
+      }
+    });
+
+    this.subscription.add(stockInfoSub);
+
   }
 
   getStockInformation() {
-    this.isLoading = true;
+    this.loadingData = true;
     this.stockInformation = null;
     this.errorText = '';
 
-    this.stockMarketService.getAllStockInfo(this.stockSymbol)
+    const getStockSub = this.stockMarketService.getAllStockInfo(this.stockSymbol)
       .subscribe((response: IAllStockInfo | null) => {
-        this.isLoading = false;
+        this.loadingData = false;
 
-        if(!response) {
+        if (!response) {
           return;
         }
 
         this.stockInformation = response;
-        this.changePercentValue = this.stockInformation.globalQuote!.changePercent;
-      }, 
-      (error: HttpErrorResponse) => {
-        this.isLoading = false;
-        this.errorText = `Could not fetch data for ${this.stockSymbol.toUpperCase()}`;
-        console.log('error occurred');
-      });
+      },
+        (error: HttpErrorResponse) => {
+          this.loadingData = false;
+          this.errorText = `Could not fetch data for ${this.stockSymbol.toUpperCase()}`;
+          console.log('error occurred');
+        });
+
+    this.subscription.add(getStockSub);
+  }
+
+  ngOnDestroy() {
+    if (!!this.subscription) {
+      this.subscription.unsubscribe();
+    }
   }
 
 }
