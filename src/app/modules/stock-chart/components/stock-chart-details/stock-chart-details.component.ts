@@ -25,10 +25,15 @@ export class StockChartDetailsComponent implements OnInit {
 
   ngOnInit() {
 
-    for (let i = 1; i < 20000; i++) {
+    console.log(new Date().getHours());
+
+    for (let i = 1; i < 2000; i++) {
       var now = new Date((this.base += this.oneDay));
-      this.date.push([now.getFullYear(), now.getMonth() + 1, now.getDate()].join('/'));
+      const time = !this.date.length ? now.getHours() : this.date[this.date.length - 1] + 2;
+      this.date.push(time);
+      // this.date.push()
       this.data.push(Math.round((Math.random() - 0.5) * 20 + this.data[i - 1]));
+
     }
 
     this.option = {

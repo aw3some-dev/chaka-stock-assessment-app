@@ -8,6 +8,7 @@ import { IAllStockInfo } from 'src/app/shared/interfaces/IAllStockInfo';
 import { IOtherStockInfo } from 'src/app/shared/interfaces/IOtherStockInfo';
 import { AmountSummaryPipe } from 'src/app/shared/pipes/amount-summary/amount-summary.pipe';
 import { StockMarketService } from 'src/app/shared/services/stock-market/stock-market.service';
+import { environment } from 'src/environments/environment';
 import otherStockInfo from '../../../../shared/data/other-stocks.json';
 
 @Component({
@@ -53,6 +54,7 @@ export class StockChartComponent implements OnInit {
         const stockInfoSub = this.stockMarketService.stockInfo$.subscribe(stock => {
           if (!!stock.globalQuote && stock.globalQuote.hasOwnProperty('symbol') && stock.globalQuote.symbol) {
             this.stockInformation = stock;
+            this.extractStatistics();
             this.cdr.markForCheck();
           }
         });
@@ -95,7 +97,6 @@ export class StockChartComponent implements OnInit {
         this.stockInformation = response;
 
         this.extractStatistics();
-        console.log(this.stockInformation);
       },
       (error: HttpErrorResponse) => {
         this.isLoading = false;
@@ -104,4 +105,13 @@ export class StockChartComponent implements OnInit {
       });
   }
 
+  openShareWindow() {
+    navigator.share({
+      url: environment.WEB_URL,
+      title: this.stockInformation!.stockOverview!.Symbol,
+      text: this.stockInformation!.stockOverview!.Name 
+    });
+
+    console.log(this.route.snapshot.url)
+  }
 }

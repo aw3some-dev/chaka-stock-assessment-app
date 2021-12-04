@@ -6,7 +6,8 @@ export const environment = {
   production: false,
   API_ENDPOINT: 'https://www.alphavantage.co/query',
   // API_KEY: '25EHFU740P1NRXEN'
-  API_KEY: 'demo'
+  API_KEY: 'demo',
+  WEB_URL: 'https://chaka-assessment.herokuapp.com/'
 };
 
 /*
